@@ -38,7 +38,13 @@ Route::prefix('admin')->group(function (){
         Route::get('/',[MainController::class,'index']) -> name('admin');
         Route::get('main',[MainController::class,'index']);
 
+        #order
 
+        Route::get('customers',[OrderController::class,'index'])->name('customer');
+        Route::get('customers/view/{customer}',[OrderController::class,'show']);
+        Route::get('ship/{id}',[OrderController::class,'active']);
+        Route::get('successShip/{id}',[OrderController::class,'successShip']);
+        Route::get('cancelShip/{id}',[OrderController::class,'cancelShip']);
         #upload
 
         Route::post('upload/services',[UploadController::class,'store']);
