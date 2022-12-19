@@ -83,6 +83,11 @@ Route::prefix('admin')->group(function (){
     Route::get('changePassword', [UserLoginController::class, 'showChangePasswordForm']);
     Route::post('changePassword', [UserLoginController::class, 'changePassword']);
     
+    #register
+
+    Route::get('register', [UserLoginController::class, 'register']);
+    Route::post('register', [UserLoginController::class, 'create']);
+
     #loadProduct
 
     Route::post('service/load-product', [HomeController::class, 'loadProduct']);
