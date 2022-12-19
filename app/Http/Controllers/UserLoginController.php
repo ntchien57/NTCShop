@@ -41,5 +41,37 @@ class UserLoginController extends Controller
         return  redirect()->back();
     }
 
+    public function showChangePasswordForm()
+    {
+        return view('changepassword.changepassword',[
+            'title' => 'Đổi mật khẩu'
+        ]);
+    }
+
+    public function changePassword(Request $request)
+    {
+        if (!Auth::attempt([
+            'email'=>$request->input('email'),
+            'password'=>$request->input('current-password')
+        ]))
+        {
+            Toastr::error('Email hoặc mật khẩu không chính xác','Lỗi');
+            return redirect()->back();
+        }
+
+        if ($request->input('current-password') == $request->input('new-password'))
+        {
+            Toastr::error('Mật khẩu mới không được trùng mật khẩu cũ','Lỗi');
+            return redirect()->back();
+        }
+
+        Auth::user()->update([
+            'password'=> bcrypt($request->input('new-password'))
+        ]);
+
+        Toastr::success('Đổi mật khẩu thành công','Success');
+        return redirect()->route('home');
+    }
+
 
 }
