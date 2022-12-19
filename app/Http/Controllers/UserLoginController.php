@@ -35,5 +35,6 @@ class UserLoginController extends Controller
 
         Toastr::success('Đăng kí thành công','Thành công');
         return redirect()->route('login-home');
+        //new commit
     }
 }
