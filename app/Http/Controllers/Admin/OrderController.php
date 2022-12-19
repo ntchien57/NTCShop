@@ -58,7 +58,7 @@ class OrderController extends Controller
             'active'=> '3'
         ]);
 
-        Toastr::error('Hủy đơn hàng','Hủy');
+        Toastr::error('Hủy đơn hàng 123','Hủy');
         return redirect()->route('customer');
     }
 }
