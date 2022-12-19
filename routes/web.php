@@ -67,6 +67,11 @@ Route::prefix('admin')->group(function (){
     Route::get('redirect/facebook', [FacebookController::class, 'redirectToFacebook'])->name('loginFacebook');
     Route::get('callback/facebook', [FacebookController::class, 'facebookSignin']);
 
+    #register
+
+    Route::get('register', [UserLoginController::class, 'register']);
+    Route::post('register', [UserLoginController::class, 'create']);
+
     #loadProduct
 
     Route::post('service/load-product', [HomeController::class, 'loadProduct']);
